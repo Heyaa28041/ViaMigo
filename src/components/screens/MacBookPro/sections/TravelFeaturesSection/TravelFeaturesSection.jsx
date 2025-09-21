@@ -7,8 +7,7 @@ export const TravelFeaturesSection = () => {
     {
       icon: SparklesIcon,
       title: "AI-Powered Planning",
-      description:
-        "Personalized itineraries based on your preferences and budget",
+      description: "Personalized itineraries based on your preferences and budget",
       delay: "0ms",
     },
     {
@@ -20,8 +19,7 @@ export const TravelFeaturesSection = () => {
     {
       icon: UsersIcon,
       title: "Smart Recommendations",
-      description:
-        "Get shortlisted places and restaurants tailored to your taste",
+      description: "Get shortlisted places and restaurants tailored to your taste",
       delay: "400ms",
     },
   ];
@@ -33,15 +31,17 @@ export const TravelFeaturesSection = () => {
         <div className="text-center mb-16">
           <h2 className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:0ms] [font-family:'Poppins',Helvetica] font-bold text-black text-4xl md:text-5xl lg:text-6xl tracking-[0] leading-[normal] mb-6">
             Everything you need for{" "}
-            <span className="bg-gradient-to-r from-[#ff6b6b] via-[#4ecdc4] to-[#45b7d1] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#126738] to-[#000000] bg-clip-text text-transparent">
               Perfect Travel
             </span>
           </h2>
-          
+
           <p className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms] [font-family:'Averia_Serif_Libre',Helvetica] font-normal text-[#000000cc] text-xl md:text-2xl lg:text-3xl tracking-[0] leading-[normal] max-w-4xl mx-auto">
             From AI-powered planning to community connections, we've got every aspect of your journey covered
           </p>
         </div>
+
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const IconComponent = feature.icon;

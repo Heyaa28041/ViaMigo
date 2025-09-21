@@ -1,8 +1,10 @@
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
 import { ChevronDownIcon } from "lucide-react";
-import * as React from "react";
 import { cn } from "../lib/utils";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const NavigationMenu = React.forwardRef(
   ({ className, children, ...props }, ref) => (
@@ -105,6 +107,22 @@ const NavigationMenuIndicator = React.forwardRef(
 );
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName;
+
+const Navbar = () => {
+  const navigate = useNavigate();
+
+  return (
+    <nav className="...">
+      {/* ...other nav items... */}
+      <Button
+        className="bg-gradient-to-r from-[#126738] to-[#004000] rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:brightness-110 transition"
+        onClick={() => navigate("/login")}
+      >
+        Get Started
+      </Button>
+    </nav>
+  );
+};
 
 export {
   navigationMenuTriggerStyle,

@@ -39,7 +39,16 @@ export const RecommendedForYouSection = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden">
+    <section className="w-full overflow-hidden px-6 max-w-7xl mx-auto">
+      {/* Heading and Subheading */}
+      <div className="mb-10">
+        <h3 className="text-3xl font-semibold mb-2 text-black">Recommended for You</h3>
+        <p className="text-gray-600 mb-6 text-lg">
+          Destinations shortlisted based on your preferences
+        </p>
+      </div>
+
+      {/* Cards Container */}
       <div className="flex gap-6 overflow-x-auto pb-4 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
         {destinations.map((destination, index) => (
           <Card
