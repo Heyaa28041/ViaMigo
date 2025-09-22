@@ -1,0 +1,71 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  name        String
+  password    String
+  preferences Json?
+  groups      GroupMember[]
+  itineraries Itinerary[]
+}
+
+model Destination {
+  id          Int      @id @default(autoincrement())
+  name        String
+  country     String
+  description String?
+  tags        String[]
+  lat         Float?
+  lon         Float?
+  avgCost     Float?
+
+  @@unique([name, country]) // ✅ allows upsert by name+country
+}
+
+model Group {
+  id          Int           @id @default(autoincrement())
+  name        String
+  isFemaleOnly Boolean      @default(false)
+  creatorId   Int
+  creator     User          @relation(fields: [creatorId], references: [id])
+  members     GroupMember[]
+}
+
+model GroupMember {
+  id      Int   @id @default(autoincrement())
+  groupId Int
+  userId  Int
+  group   Group @relation(fields: [groupId], references: [id])
+  user    User  @relation(fields: [userId], references: [id])
+
+  @@unique([groupId, userId])
+}
+
+model Itinerary {
+  id        Int             @id @default(autoincrement())
+  title     String
+  startDate DateTime
+  endDate   DateTime
+  userId    Int
+  user      User            @relation(fields: [userId], references: [id])
+  items     ItineraryItem[]
+}
+
+model ItineraryItem {
+  id           Int       @id @default(autoincrement())
+  itineraryId  Int
+  day          Int
+  title        String
+  description  String
+  order        Int
+  destinationId Int?
+  itinerary    Itinerary @relation(fields: [itineraryId], references: [id])
+}
